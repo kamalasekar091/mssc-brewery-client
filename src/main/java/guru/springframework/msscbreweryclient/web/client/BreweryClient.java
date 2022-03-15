@@ -8,6 +8,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.UUID;
 //sfg.brewery
@@ -31,11 +32,11 @@ public class BreweryClient {
         return restTemplate.getForObject(apihost+BEER_PATH_V1+beerId.toString(),BeerDto.class);
     }
 
-    public URI saveNewBeer(BeerDto beerDto){
+    public URI saveNewBeer(@Valid BeerDto beerDto){
         return restTemplate.postForLocation(apihost+BEER_PATH_V1,beerDto);
     }
 
-    public void updateBeer(UUID beerId,BeerDto beerDto){
+    public void updateBeer(UUID beerId, @Valid BeerDto beerDto){
         restTemplate.put(apihost + BEER_PATH_V1 + beerId.toString(), beerDto);
     }
 

@@ -1,6 +1,7 @@
 package guru.springframework.msscbreweryclient.web.client;
 
 import guru.springframework.msscbreweryclient.web.model.BeerDto;
+import guru.springframework.msscbreweryclient.web.model.BeerStyleEnum;
 import guru.springframework.msscbreweryclient.web.model.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,13 @@ class BreweryClientTest {
 
     @Test
     void testSaveBeer(){
-        BeerDto beerDto = BeerDto.builder().beerName("King King").build();
+        BeerDto beerDto = BeerDto.builder().beerName("King King").beerStyle("ALE").upc(100L).build();
         assertNotNull(breweryClient.saveNewBeer(beerDto));
     }
 
     @Test
     void testUpdateBeer(){
-        BeerDto beerDto = BeerDto.builder().beerName("King King").build();
+        BeerDto beerDto = BeerDto.builder().beerName("King King").beerStyle("ALE").upc(100L).build();
         breweryClient.updateBeer(UUID.randomUUID(),beerDto);
     }
 
